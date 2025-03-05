@@ -17,10 +17,11 @@ public class CarRentalService {
         cars.add(new Car("33BB44", "Tesla", 1120, false));
         Car maybach = new Car("55CC66", "Maybach", 2200, true);
         maybach.setRentalPeriod(new RentalPeriod("2025-02-10", "2025-02-20"));
+        cars.add(maybach);
         Car peugeot = new Car("77DD88", "Peugeot", 500, false);
         cars.add(peugeot);
-        
-        cars.add(maybach);
+        Car BMW = new Car("99EE1010", "BMW", 500, false);
+        cars.add(BMW);
     }
 
     @GetMapping
