@@ -15,6 +15,7 @@ jobs:
       - name: Build and test
         working-directory: td1progd
         run: |
+          chmod +x ./gradlew
           export SHELL=/bin/bash
           ./gradlew build
       - name: Docker images
