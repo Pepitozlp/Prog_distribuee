@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/cars")
@@ -15,11 +14,14 @@ public class CarRentalService {
 
     public CarRentalService() {
         cars.add(new Car("11AA22", "Ferrari", 100, false));
-        cars.add(new Car("33BB44", "Tesla", 120, false));
-        Car maybach = new Car("55CC66", "Maybach", 220, true);
+        cars.add(new Car("33BB44", "Tesla", 1120, false));
+        Car maybach = new Car("55CC66", "Maybach", 2200, true);
         maybach.setRentalPeriod(new RentalPeriod("2025-02-10", "2025-02-20"));
-        
         cars.add(maybach);
+        Car peugeot = new Car("77DD88", "Peugeot", 500, false);
+        cars.add(peugeot);
+        Car BMW = new Car("99EE1010", "BMW", 500, false);
+        cars.add(BMW);
     }
 
     @GetMapping
