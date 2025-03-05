@@ -20,8 +20,6 @@ public class CarRentalService {
         cars.add(maybach);
         Car peugeot = new Car("77DD88", "Peugeot", 500, false);
         cars.add(peugeot);
-        Car BMW = new Car("99EE1010", "BMW", 500, false);
-        cars.add(BMW);
     }
 
     @GetMapping
