@@ -14,11 +14,14 @@ jobs:
           distribution: 'adopt'
       - name: Build and test
         working-directory: main
+        working-directory: web
         run: |
           export SHELL=/bin/bash
           ./gradlew build
       - name: Docker images
         working-directory: main
+        working-directory: web
+
         run: |
           export SHELL=/bin/bash
           docker build -t rent .
