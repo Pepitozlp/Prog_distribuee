@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Détail Véhicule</title>
+</head>
+<body>
+  <h1>Détail du véhicule</h1>
+  <div id="details"></div>
+
+  <script>
+    async function loadVehicle() {
+      const params = new URLSearchParams(window.location.search);
+      const type = params.get("type"); // "car" ou "moto"
+      const id = params.get("id");
+  
+      const url = `http://127.0.0.1:52901/${type}s/${id}`;
+      console.log("🔍 Appel API vers :", url);  // ← Debug ici
+  
+      try {
+        const res = await fetch(url);
+        console.log("✅ Réponse reçue :", res);  // ← Debug ici
+        if (!res.ok) throw new Error("Erreur " + res.status);
+  
+        const data = await res.json();
+        console.log("📦 Données :", data);  // ← Debug ici
+  
+        const html = `
+          <h2>${data.model}</h2>
+          <p>Immatriculation: ${data.plateNumber}</p>
+          <p>Prix: ${data.price}€</p>
+        `;
+        document.getElementById("details").innerHTML = html;
+      } catch (err) {
+        console.error("❌ Erreur:", err);  // ← Debug ici aussi
+        document.getElementById("details").innerText = "Erreur de chargement: " + err.message;
+      }
+    }
+  
+    loadVehicle();
+  </script>
+  
+  

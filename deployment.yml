@@ -1,90 +1,71 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: rentalservice
-    version: "1.0"
-  name: rentalservice
+  name: front-end-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: rentalservice
-  strategy: {}
+      app: front-end
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: rentalservice
+        app: front-end
     spec:
       containers:
-        - name: rentalservice
-          image: pepitozlp/rent:1
+        - name: front-end-container
+          image: pepitozlp/frontrent:1
           imagePullPolicy: Always
-          ports:
-            - containerPort: 8080
-          resources: {}
-      restartPolicy: Always
-status: {}
+          env:
+            - name: backEndURL
+              value: http://back-end-service:80
 
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-end-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: back-end
+  template:
+    metadata:
+      labels:
+        app: back-end
+    spec:
+      containers:
+        - name: back-end-container
+          image: pepitozlp/rent:5
+          imagePullPolicy: Always
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
-  labels:
-    app: rentalservice
-  name: rentalservice
+  name: front-end-service
 spec:
   ports:
-    - port: 80
-      protocol: TCP
+    - name: http
+      targetPort: 8081
+      port: 80
+  type: NodePort
+  selector:
+    app: front-end
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: back-end-service
+spec:
+  ports:
+    - name: http
       targetPort: 8080
-      name: http
+      port: 80
+  type: ClusterIP
   selector:
-    app: rentalservice
-  type: LoadBalancer
-status:
-  loadBalancer: {}
+    app: back-end
 
----
-
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: microservice-gateway
-spec:
-  selector:
-    istio: ingressgateway
-  servers:
-    - port:
-        number: 80
-        name: http
-        protocol: HTTP
-      hosts:
-        - "*"
-
-
----
-
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: carservice
-spec:
-  hosts:
-    - "*"
-  gateways:
-    - microservice-gateway
-  http:
-    - match:
-        - uri:
-            prefix: /rentalservice/
-      rewrite:
-        uri: /
-      route:
-        - destination:
-            port:
-              number: 80
-            host: rentalservice.default.svc.cluster.local
