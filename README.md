@@ -45,4 +45,5 @@ This project is an implementation of a rental service. This guide will explain h
     after that you can add  ```/i ``` where i is the id of the car or moto 
 
 5. **Images**
+    ```bash```
     the docker images can be found on https://hub.docker.com/repositories/pepitozlp and are called : ```rent``` and ```frontrent```
