@@ -37,7 +37,7 @@ This project is an implementation of a rental service. This guide will explain h
     ```
     this will give you an ip adress to access the site
 
-    to acess the front you will need to entrer
+    to access the front you will need to entrer
     ```
     ip-address-given-to-you/frontend/...
     ```
