@@ -41,15 +41,15 @@ This project is an implementation of a rental service. This guide will explain h
     ```
     ip-address-given-to-you/frontend/...
     ```
-    where the ... can be replaced by :  ```Cars ``` or  ```motos ```
-    after that you can add  ```/i ``` where i is the id of the car or moto 
+    where the ... can be replaced by :  ```cars``` or  ```motos```
+    after that you can add  ```/i ``` where i is the id of the car or bike 
 
     !!! this method doesn't work currently (minikube)
 
-    you can also launch it locally by executing ```Td1progdApplication.java ``` and ```FrontendApplication.java ```
-    this will allow you to access both the backend via ```localhost:8080/... ``` or the frontend via ```localhost:8081/frontend/... ```  where the ... can be replaced by :  ```cars ``` or  ```motos ```
-    after that you can add  ```/i ``` where i is the id of the car or moto 
-    you can also use html request such as ```localhost:8081/vehicule.html?type={type}&id={id} ``` where ```{type} ``` is either ```car ``` or ```moto ``` and 
+    you can also launch it locally by executing ```Td1progdApplication.java``` and ```FrontendApplication.java```
+    this will allow you to access both the backend via ```localhost:8080/...``` or the frontend via ```localhost:8081/frontend/...```  where the ... can be replaced by :  ```cars``` or  ```motos```
+    after that you can add  ```/i``` where i is the id of the car or moto 
+    you can also use html request such as ```localhost:8081/vehicule.html?type={type}&id={id}``` where ```{type}``` is either ```car``` or ```moto``` and 
     {id} is the id of the car/bike
 
 5. **Images**
