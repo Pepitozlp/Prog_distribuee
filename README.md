@@ -47,6 +47,7 @@ This project is an implementation of a rental service. This guide will explain h
     !!! this method doesn't work currently (minikube)
 
 5. **Launching locally**
+
     you can also launch it locally by executing ```Td1progdApplication.java``` and ```FrontendApplication.java```
     this will allow you to access both the backend via ```localhost:8080/...``` or the frontend via ```localhost:8081/frontend/...```  where the ... can be replaced by :  ```cars``` or  ```motos```
     after that you can add  ```/i``` where i is the id of the car or moto 
